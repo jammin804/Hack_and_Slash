@@ -1,15 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿public class Vital : ModifyStat {
+	private int _currentValue;
 
-public class Vital : MonoBehaviour {
+	public Vital(){
+		_currentValue = 0;
+		ExpToLevel = 50;
+		LevelModifier = 1.1f;
+	}
 
-	// Use this for initialization
-	void Start () {
-	
+	public int CurrentValue{
+		get{
+			if(_currentValue > AdjustedBaseValue)
+				_currentValue = AdjustedBaseValue;
+
+			return _currentValue;
+		}
+		set{_currentValue = value; }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+}
+
+public enum VitalName{
+	Health,
+	Energy,
+	Mana
 }
